@@ -1,0 +1,14 @@
+body {
+	background-image: url("ugly.jpg");
+	background-repeat: repeat;
+}
+
+
+h1 {
+	font-size: 70px;
+}
+
+img {
+	box-shadow: 0 0 9px 6px rgba(72, 75, 78, .44);
+	border-radius: .285714rem;
+}
