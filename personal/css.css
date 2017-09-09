@@ -3,6 +3,10 @@ body {
 	background-repeat: repeat;
 }
 
+div {
+	text-align: center;
+}
+
 
 h1 {
 	font-size: 70px;
