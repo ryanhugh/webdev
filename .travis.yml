@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 6
+
+script:
+  - bash travis_deploy.sh
+
+cache: yarn
