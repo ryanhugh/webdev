@@ -21,6 +21,10 @@ ssh-add ~/.ssh/id_rsa
 # Push to prod if this is the prod branch
 if [ "$TRAVIS_BRANCH" == "prod" ]; then
   echo 'Deploying to prod'
+
+  rm $(find . | grep .xcf\$)
+  rm -rf .git
+  tar -czvf tarball.tar.gz *
   
   ssh -o StrictHostKeyChecking=no ubuntu@52.45.2.162 'cd www/webdev; git reset --hard'
   ssh -o StrictHostKeyChecking=no ubuntu@52.45.2.162 'cd www/webdev; git pull'
