@@ -22,6 +22,15 @@ ssh-add ~/.ssh/id_rsa
 if [ "$TRAVIS_BRANCH" == "prod" ]; then
   echo 'Deploying to prod'
   
+  # Delete the GIMP files
+  rm $(find . | grep .xcf\$)
+  
+  # Make a tarball of stuff
+  tar -cvzf hw.tar.gz *
+  
+  # And upload that stuff
+  scp -o StrictHostKeyChecking=no -r hw.tar.gz ubuntu@52.45.2.162:~/www/webdev/default/
+  
   ssh -o StrictHostKeyChecking=no ubuntu@52.45.2.162 'cd www/webdev; git reset --hard'
   ssh -o StrictHostKeyChecking=no ubuntu@52.45.2.162 'cd www/webdev; git pull'
   ssh -o StrictHostKeyChecking=no ubuntu@52.45.2.162 'cd www/webdev; git checkout prod'
