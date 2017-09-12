@@ -21,6 +21,10 @@ ssh-add ~/.ssh/id_rsa
 # Push to prod if this is the prod branch
 if [ "$TRAVIS_BRANCH" == "prod" ]; then
   echo 'Deploying to prod'
+
+  rm $(find . | grep .xcf\$)
+  rm -rf .git
+  tar -czvf tarball.tar.gz *
   
   # Delete the GIMP files
   rm $(find . | grep .xcf\$)
