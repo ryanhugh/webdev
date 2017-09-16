@@ -1,0 +1,3 @@
+A signed-out user should be able to sign in
+A signed-out 
+A signed-in user should be able to sign out
