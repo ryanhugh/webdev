@@ -1,3 +1,28 @@
 A signed-out user should be able to sign in
-A signed-out 
-A signed-in user should be able to sign out
+
+To sign in, Bob first visits the home page of the site and clicks the sign in link. He is then presented with a sign in page. He then types in his username and password and successfully signes in. 
+
+
+A signed-out should be able to reset their password.
+
+To reset a password, Bob first visits the home page of the site and clicks the sign in link. Beneith the username and password fields there is a I forgot my password button. Bob then enters his email and clicks this button and is shown a message that a reset link was sent to his email. He then opens his email and clicks on the reset my password button in his email. 
+
+// A signed-out user should be able to create an account. 
+A signed-in user should be able to sign out.
+
+To sign out, Bob first visits a page while signed in. Then, he clicks the sign-out button in the top right corner. 
+
+A signed-in user should be able to change their password.
+
+To change their password, Bob first visits the account management page while signed in. He then enters a new password and his old password. His password is then changed. 
+
+A signed-in user should be able to create a post.
+
+To create a post, Bob first visits the posts page. He then enters his post content into the post text box and clicks submit. 
+
+
+A signed-in user should be able to read all posts.
+
+To read all posts, Bob first vists the posts page. He then scrolls down and reads all the posts. 
+
+
