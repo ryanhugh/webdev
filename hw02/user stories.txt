@@ -26,3 +26,31 @@ A signed-in user should be able to read all posts.
 To read all posts, Bob first vists the posts page. He then scrolls down and reads all the posts. 
 
 
+
+
+
+
+Resources
+
+Posts:
+
+The posts page needs to keep track of all the posts.
+The posts page will have a text box on the top, for users to post new posts, and all the others posts below. This layout may be similar to Facebook's feed. This will require that the application can store new posts and serve posts that were posted previously. 
+
+These posts will be stored in a database.
+When the page loads, the posts will be loaded from the database.
+When the page loads, the javascript in the frontend will request the most recently posted posts. If the user continues to browse the posts, the page can request even more posts from the server. 
+The javascript will send the server a request to the url /getPosts with the parameter start, which specifies how many posts to skip when finding posts, and the parameter count, which specifies how many posts to return. The posts are going to be returned as a JSON array sorted by when they were posted. 
+
+This will require that 
+
+The data shall be stored in MongoDB because it is plenty powerfull and more than adiquite for a small site like this homework project. 
+The posts data shall be stored in a collection in MongoDB. The collection will have the folliwing schema:
+
+_id: The id of the post. All posts will have a unique Id. 
+text: the text of the post
+author: the username of the user who posted the post
+timestamp: when this post was posted, (in ms since epoch)
+
+
+There is going be 
