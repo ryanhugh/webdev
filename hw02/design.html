@@ -123,14 +123,21 @@
                 <p>
                     The data shall be stored in MongoDB because it is plenty powerfull and more than adiquite for a small site like this homework project. The posts data shall be stored in a collection in MongoDB. The collection will have the folliwing schema:
                 </p>
+                
+                Create: After the post is created the user will be directed to the posts-new.html page.
+                Show: If the user wants to see all the posts, they can go to the posts-show.html page to see all the posts.
+                
 
                 <div class="well">
 
                     The id of the post. All posts will have a unique Id.
                     <br> _id: ObjectId(...)
                     <br>
-                    <br> The text of the post author: the username of the user who posted the post
+                    <br> The text of the post 
                     <br> text: string
+                    <br>
+                    <br> The username of the user who posted the post
+                    <br> author: string
                     <br>
                     <br> When this post was posted, (in ms since epoch)
                     <br> timestamp: integer
@@ -150,6 +157,8 @@
                     <br>The email address of the user. Will be unique for each user.
                     <br>email: string
                     <br>
+                    <br>The name of the user. 
+                    <br>name: string
                     <br>
                     <br>The hash of the user's password. It will be ensured that this is adiquitly secure. The user's raw password will not be stored because the password itself is not needed to verify that the user typed in the correct password, only a hash of the password is needed. Does not need to be unique for each user.
                     <br>
