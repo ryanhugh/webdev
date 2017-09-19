@@ -53,4 +53,18 @@ author: the username of the user who posted the post
 timestamp: when this post was posted, (in ms since epoch)
 
 
-There is going be 
+
+
+Account page:
+
+There will be a collection in the MongoDB database that keeps track of the different users.
+Each item in the collection will have the following attributes:
+
+_id: The id of the user. This will be unique for each user
+email: the email address of the user. Will be unique for each user.
+passwordHash: the hash of the user's password. It will be ensured that this is adiquitly secure. THe user's raw password will not be stored because the password itself is not needed to verify that the user typed in the correct password, only a hash of the password is needed. Does not need to be unique for each user. 
+
+When the logged-in user makes a request to the account page the page will load and display the user's email. There will be an option for the user to change their password. If the user types in their old password and thier new password the information will first be send to the backend. The backend will then generate a hash of both of the passwords. If the hash of the old password matches the hash of the existing password the old hash is replaced with the hash of the new password. 
+
+Each one of the posts in the posts collection will have a author field, such that the author field is one of the usernames that is stored in the user collection. 
+
