@@ -1,0 +1,167 @@
+<!-- This was created from the template hosted here: view-source:https://getbootstrap.com/docs/3.3/examples/starter-template/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Design Documents</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="https://getbootstrap.com/docs/3.3/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/3.3/examples/starter-template/starter-template.css" rel="stylesheet">
+    <link href="css.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Posts</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">All Posts</a>
+                    </li>
+                    <li>
+                        <a href="#">New Post</a>
+                    </li>
+                    <li>
+                        <a href="#">Create an account</a>
+                    </li>
+                    <li>
+                        <a href="#">Account details</a>
+                    </li>
+                    <li>
+                        <a href="#about">Users</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="starter-template">
+            <h1 class="first-header-index-page">Design Documents</h1>
+
+            <div class="design-body">
+
+
+            <p>
+                A signed-out user should be able to sign in
+            </p>
+            <p>
+                To sign in, Bob first visits the home page of the site and clicks the sign in link. He is then presented with a sign in page. He then types in his username and password and successfully signes in.
+            </p>
+            <p>
+
+                A signed-out should be able to reset their password.
+            </p>
+            <p>
+                To reset a password, Bob first visits the home page of the site and clicks the sign in link. Beneith the username and password fields there is a I forgot my password button. Bob then enters his email and clicks this button and is shown a message that a reset link was sent to his email. He then opens his email and clicks on the reset my password button in his email.
+            </p>
+            <p>
+                To sign out, Bob first visits a page while signed in. Then, he clicks the sign-out button in the top right corner.
+            </p>
+            <p>
+                A signed-in user should be able to change their password.
+            </p>
+            <p>
+                To change their password, Bob first visits the account management page while signed in. He then enters a new password and his old password. His password is then changed.
+            </p>
+            <p>
+                A signed-in user should be able to create a post.
+            </p>
+            <p>
+                To create a post, Bob first visits the posts page. He then enters his post content into the post text box and clicks submit.
+            </p>
+            <p>
+
+                A signed-in user should be able to read all posts.
+            </p>
+            <p>
+                To read all posts, Bob first vists the posts page. He then scrolls down and reads all the posts.
+
+            </p>
+            <p>
+
+
+
+            </p>
+            <p>
+                Resources
+            </p>
+            <p>
+                Posts: The posts page needs to keep track of all the posts. The posts page will have a text box on the top, for users to post new posts, and all the others posts below. This layout may be similar to Facebook's feed. This will require that the application can store new posts and serve posts that were posted previously.
+            </p>
+            <p>
+                These posts will be stored in a database. When the page loads, the posts will be loaded from the database. When the page loads, the javascript in the frontend will request the most recently posted posts. If the user continues to browse the posts, the page can request even more posts from the server. The javascript will send the server a request to the url /getPosts with the parameter start, which specifies how many posts to skip when finding posts, and the parameter count, which specifies how many posts to return. The posts are going to be returned as a JSON array sorted by when they were posted.
+            </p>
+            <p>
+                The data shall be stored in MongoDB because it is plenty powerfull and more than adiquite for a small site like this homework project. The posts data shall be stored in a collection in MongoDB. The collection will have the folliwing schema:
+            </p>
+            <p>
+                _id: The id of the post. All posts will have a unique Id. text: the text of the post author: the username of the user who posted the post timestamp: when this post was posted, (in ms since epoch)
+
+
+            </p>
+            <p>
+
+                Account page:
+            </p>
+            <p>
+                There will be a collection in the MongoDB database that keeps track of the different users. Each item in the collection will have the following attributes:
+            </p>
+            <p>
+                _id: The id of the user. This will be unique for each user email: the email address of the user. Will be unique for each user. passwordHash: the hash of the user's password. It will be ensured that this is adiquitly secure. THe user's raw password will not be stored because the password itself is not needed to verify that the user typed in the correct password, only a hash of the password is needed. Does not need to be unique for each user.
+            </p>
+            <p>
+                When the logged-in user makes a request to the account page the page will load and display the user's email. There will be an option for the user to change their password. If the user types in their old password and thier new password the information will first be send to the backend. The backend will then generate a hash of both of the passwords. If the hash of the old password matches the hash of the existing password the old hash is replaced with the hash of the new password.
+            </p>
+            <p>
+                Each one of the posts in the posts collection will have a author field, such that the author field is one of the usernames that is stored in the user collection.
+
+            </p>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
+</html>
