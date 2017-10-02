@@ -22,7 +22,4 @@ Repo.delete_all(User)
 ryan = Repo.insert!(%User{name: "Ryan Hughes", passwordHash: "fdjfhasiuf", email: "ryanhughes624@gmail.com", username: "ryanhughes624"})
 Repo.insert!(%Post{postid: 2, title: "Hello World", content: "Body here", user_id: ryan.id })
 
-IO.puts ryan
-
-
 Repo.insert!(%Follow{follower_user_id: ryan.id, following_user_id: ryan.id})

@@ -36,7 +36,7 @@ defmodule MicroblogWeb.PostController do
     # "content" => "f", "postid" => "2", "title" => "f"}. This 
 
 
-    two = %{"content" => "content hererer", "postid" => post_params["postid"], "title" => post_params["title"], "user_id" => 10 }
+    two = %{"content" => "content hererer", "postid" => post_params["postid"], "title" => post_params["title"], :user_id => 10 }
     # two = %{""}
     
     # IO.puts two["fdafds"]
