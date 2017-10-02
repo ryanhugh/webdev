@@ -13,16 +13,33 @@ defmodule MicroblogWeb.PostController do
   def new(conn, _params) do
     changeset = Blog.change_post(%Post{})
     render(conn, "new.html", changeset: changeset)
+
   end
 
   def create(conn, %{"post" => post_params}) do
     import Plug.Conn
 
+
+
+    IO.puts 'HIIIIIIIII'
+    IO.puts :username
+    IO.puts :show
+    user_id = get_session(conn, :user_id)
+    # post_params[:user_id] = user_id
+    
+    post_params = %{post_params | :user_id => user_id}
+
+
+    # IO.puts post_params
+    IO.puts 'HIIIIIIIII'
+
+
+
     # IO.puts 'hi'
     case Blog.create_post(post_params) do
       {:ok, post} ->
         conn
-        |> put_flash(:info, "Post created successfully."  + get_session(conn))
+        |> put_flash(:info, "Post created successfully.")
         |> redirect(to: post_path(conn, :show, post))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
