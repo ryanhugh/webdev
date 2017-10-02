@@ -7,14 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Microblog!</title>
+    <title>Hello NuMart!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-
   <body>
    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
-      <a class="navbar-brand" href="#">Microblog</a>
+      <a class="navbar-brand" href="#">WebShop</a>
 
       <button class="navbar-toggler" type="button"
               data-toggle="collapse" data-target="#main-navbar">
@@ -24,12 +23,15 @@
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-        <%= link "Posts", to: post_path(@conn, :index), class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-              <%= link "Users", to: user_path(@conn, :index), class: "nav-link" %>
-
+            <% active = nav_active?(@view_module, "Product") %>
+	          <%= link "Products", to: product_path(@conn, :index), class: "nav-link #{active}" %>
           </li>
+          <%= if is_admin?(@current_user) do %>
+            <li class="nav-item">
+              <% active = nav_active?(@view_module, "User") %>
+              <%= link "Users", to: user_path(@conn, :index), class: "nav-link #{active}" %>
+            </li>
+          <% end %>
         </ul>
       </div>
 
@@ -65,10 +67,15 @@
         <div class="col-sm-8">
           <%= render @view_module, @view_template, assigns %>
         </div>
+        <div class="col-sm-4">
+          <h2>Your Cart</h2>
+          <%= render NuMartWeb.CartView, "cart.html", Map.put(assigns, :cart, @current_cart) %>
+          <%= link("Checkout", to: cart_path(@conn, :show, @current_cart), class: "btn btn-primary") %>
+        </div>
       </div>
 
     </div> <!-- container -->
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-</body>
+  </body>
 </html>

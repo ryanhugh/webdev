@@ -1,0 +1,39 @@
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><%= link("Products", to: product_path(@conn, :index)) %></li>
+  <li class="breadcrumb-item active"><%= @product.name %></li>
+</ol>
+
+<h2><%= @product.name %></h2>
+
+<%= if is_admin?(@current_user) do %>
+  <p><span><%= link "Edit", to: product_path(@conn, :edit, @product) %></span></p>
+<% end %>
+
+<p><%= img_tag(static_path(@conn, "/images/goat.jpg"), class: "w-50") %></p>
+
+<p><%= @product.desc %></p>
+
+<p>Price: $<%= @product.price %></p>
+
+<%= form_for @cart_item, cart_item_path(@conn, :create), [class: "form-inline"], fn f -> %>
+  <%= if @cart_item.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= hidden_input f, :cart_id %>
+  <%= hidden_input f, :product_id %>
+
+  <div class="form-group">
+    <%= number_input f, :count, class: "form-control" %>
+    <%= error_tag f, :count %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Add to Cart", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
