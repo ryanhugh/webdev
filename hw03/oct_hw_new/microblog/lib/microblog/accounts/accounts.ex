@@ -6,7 +6,7 @@ defmodule Microblog.Accounts do
   import Ecto.Query, warn: false
   alias Microblog.Repo
 
-  alias Microblog.Accounts.User
+  alias Microblog.Blog.User
 
   @doc """
   Returns the list of users.
@@ -108,7 +108,7 @@ defmodule Microblog.Accounts do
     User.changeset(user, %{})
   end
 
-  alias Microblog.Accounts.Follow
+  alias Microblog.Blog.Follow
 
   @doc """
   Returns the list of follows.
