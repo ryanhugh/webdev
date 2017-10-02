@@ -27,16 +27,26 @@ defmodule MicroblogWeb.PostController do
     user_id = get_session(conn, :user_id)
     # post_params[:user_id] = user_id
     
-    post_params = %{post_params | :user_id => user_id}
+    # post_params = %{post_params | :user_id => user_id}
 
 
+    IO.puts post_params["title"]
+    IO.puts user_id
+
+    # "content" => "f", "postid" => "2", "title" => "f"}. This 
+
+
+    two = %{"content" => "content hererer", "postid" => post_params["postid"], "title" => post_params["title"], "user_id" => 10 }
+    # two = %{""}
+    
+    # IO.puts two["fdafds"]
     # IO.puts post_params
     IO.puts 'HIIIIIIIII'
 
 
 
     # IO.puts 'hi'
-    case Blog.create_post(post_params) do
+    case Blog.create_post(two) do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
