@@ -46,7 +46,7 @@ defmodule MicroblogWeb.PostController do
 
 
     # IO.puts 'hi'
-    case Blog.create_post(two) do
+    case Blog.create_post(post_params) do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
