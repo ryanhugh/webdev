@@ -8,7 +8,7 @@ defmodule Microblog.Blog.Post do
     field :content, :string
     field :postid, :integer
     field :title, :string
-    field :user_id, :id
+    field :user_id, :string
 
     timestamps()
   end
@@ -16,7 +16,7 @@ defmodule Microblog.Blog.Post do
   @doc false
   def changeset(%Post{} = post, attrs) do
     post
-    |> cast(attrs, [:postid, :title, :content])
-    |> validate_required([:postid, :title, :content])
+    |> cast(attrs, [:postid, :title, :content, :user_id])
+    |> validate_required([:postid, :title, :content, :user_id])
   end
 end

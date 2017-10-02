@@ -6,11 +6,10 @@ defmodule Microblog.Repo.Migrations.CreatePosts do
       add :postid, :integer
       add :title, :string
       add :content, :string
-      add :user_id, references(:users, on_delete: :nothing)
+      add :user_id, :string
 
       timestamps()
     end
 
-    create index(:posts, [:user_id])
   end
 end

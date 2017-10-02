@@ -3,6 +3,8 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Follower user</th>
+      <th>Following user</th>
 
       <th></th>
     </tr>
@@ -10,6 +12,8 @@
   <tbody>
 <%= for follow <- @followings do %>
     <tr>
+      <td><%= follow.follower_user_id %></td>
+      <td><%= follow.following_user_id %></td>
 
       <td class="text-right">
         <span><%= link "Show", to: follow_path(@conn, :show, follow), class: "btn btn-default btn-xs" %></span>

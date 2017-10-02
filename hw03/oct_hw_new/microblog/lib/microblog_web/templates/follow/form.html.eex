@@ -6,6 +6,18 @@
   <% end %>
 
   <div class="form-group">
+    <%= label f, :follower_user_id, class: "control-label" %>
+    <%= text_input f, :follower_user_id, class: "form-control" %>
+    <%= error_tag f, :follower_user_id %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :following_user_id, class: "control-label" %>
+    <%= text_input f, :following_user_id, class: "form-control" %>
+    <%= error_tag f, :following_user_id %>
+  </div>
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

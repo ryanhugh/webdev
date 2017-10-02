@@ -1,5 +1,4 @@
 defmodule MicroblogWeb.PostController do
-  import Plug.Conn
   use MicroblogWeb, :controller
 
   alias Microblog.Blog
@@ -13,39 +12,9 @@ defmodule MicroblogWeb.PostController do
   def new(conn, _params) do
     changeset = Blog.change_post(%Post{})
     render(conn, "new.html", changeset: changeset)
-
   end
 
   def create(conn, %{"post" => post_params}) do
-    import Plug.Conn
-
-
-
-    IO.puts 'HIIIIIIIII'
-    IO.puts :username
-    IO.puts :show
-    user_id = get_session(conn, :user_id)
-    # post_params[:user_id] = user_id
-    
-    # post_params = %{post_params | :user_id => user_id}
-
-
-    IO.puts post_params["title"]
-    IO.puts user_id
-
-    # "content" => "f", "postid" => "2", "title" => "f"}. This 
-
-
-    two = %{"content" => "content hererer", "postid" => post_params["postid"], "title" => post_params["title"], :user_id => 10 }
-    # two = %{""}
-    
-    # IO.puts two["fdafds"]
-    # IO.puts post_params
-    IO.puts 'HIIIIIIIII'
-
-
-
-    # IO.puts 'hi'
     case Blog.create_post(post_params) do
       {:ok, post} ->
         conn

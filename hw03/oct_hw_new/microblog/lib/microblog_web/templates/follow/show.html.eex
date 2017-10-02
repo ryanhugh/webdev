@@ -2,6 +2,16 @@
 
 <ul>
 
+  <li>
+    <strong>Follower user:</strong>
+    <%= @follow.follower_user_id %>
+  </li>
+
+  <li>
+    <strong>Following user:</strong>
+    <%= @follow.following_user_id %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: follow_path(@conn, :edit, @follow) %></span>

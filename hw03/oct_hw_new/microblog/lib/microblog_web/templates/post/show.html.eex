@@ -17,6 +17,11 @@
     <%= @post.content %>
   </li>
 
+  <li>
+    <strong>User:</strong>
+    <%= @post.user_id %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
