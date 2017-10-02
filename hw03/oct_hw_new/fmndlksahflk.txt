@@ -1,0 +1,56 @@
+mix phx.gen.html Blog User users name:string passwordHash:string email:string username:string
+
+mix phx.gen.html Blog Post posts postid:integer title:string content:string user_id:references:users 
+
+mix phx.gen.html Blog Follow followings follower_user_id:references:users following_user_id:references:users
+
+
+
+
+mix phx.gen.html Blog Follow followings cart_id:references:carts product_id:references:products count:integer
+
+
+
+
+
+ADD FOLLOWING AND FOLLOWERS AS ARRAY TO JS
+
+
+mix phx.gen.html Shop Cart carts cart_type:string
+
+mix phx.gen.html Shop Cart carts cart_type:string
+mix phx.gen.html Shop CartItem cart_items cart_id:references:carts product_id:references:products count:integer
+
+
+
+mix phx.gen.html Blog Post posts postId:integer title:string content:string author:string
+
+
+ALTER USER "postgres" WITH PASSWORD 'postgres';
+
+mix deps.get
+mix release.init
+env MIX_ENV=prod mix release --env=prod
+env MIX_ENV=prod mix phx.digest --env=prod --verbose
+env PORT=4000 _build/prod/rel/microblog/bin/microblog foreground
+
+
+mix phx.digest
+mix phx.server
+mix ecto.migrate --step 1
+mix ecto.migrate
+mix ecto.drop
+mix ecto.migrate microblog
+mix phx.new microblog
+
+
+
+    $ mix ecto.create
+
+Start your Phoenix app with:
+
+    $ mix phx.server
+
+You can also run your app inside IEx (Interactive Elixir) as:
+
+    $ iex -S mix phx.server

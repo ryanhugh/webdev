@@ -13,7 +13,7 @@
   <tbody>
 <%= for post <- @posts do %>
     <tr>
-      <td><%= post.postId %></td>
+      <td><%= post.postid %></td>
       <td><%= post.title %></td>
       <td><%= post.content %></td>
 

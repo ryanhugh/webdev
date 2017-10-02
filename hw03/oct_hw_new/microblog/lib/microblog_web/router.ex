@@ -1,4 +1,3 @@
-
 defmodule MicroblogWeb.Router do
   use MicroblogWeb, :router
 
@@ -16,13 +15,13 @@ defmodule MicroblogWeb.Router do
 
   scope "/", MicroblogWeb do
     pipe_through :browser # Use the default browser stack
-    resources "/posts", PostController
+
     resources "/users", UserController
+    resources "/posts", PostController
+    resources "/followings", FollowController
 
     get "/", PageController, :index
   end
-
-  
 
   # Other scopes may use custom stacks.
   # scope "/api", MicroblogWeb do

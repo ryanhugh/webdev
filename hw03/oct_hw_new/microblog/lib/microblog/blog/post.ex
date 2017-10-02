@@ -6,9 +6,9 @@ defmodule Microblog.Blog.Post do
 
   schema "posts" do
     field :content, :string
-    field :postId, :integer
+    field :postid, :integer
     field :title, :string
-    field :author, :id
+    field :user_id, :id
 
     timestamps()
   end
@@ -16,7 +16,7 @@ defmodule Microblog.Blog.Post do
   @doc false
   def changeset(%Post{} = post, attrs) do
     post
-    |> cast(attrs, [:postId, :title, :content])
-    |> validate_required([:postId, :title, :content])
+    |> cast(attrs, [:postid, :title, :content])
+    |> validate_required([:postid, :title, :content])
   end
 end

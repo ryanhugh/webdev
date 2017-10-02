@@ -6,9 +6,9 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :postId, class: "control-label" %>
-    <%= number_input f, :postId, class: "form-control" %>
-    <%= error_tag f, :postId %>
+    <%= label f, :postid, class: "control-label" %>
+    <%= number_input f, :postid, class: "form-control" %>
+    <%= error_tag f, :postid %>
   </div>
 
   <div class="form-group">
