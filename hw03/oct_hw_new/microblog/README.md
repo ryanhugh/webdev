@@ -1,20 +1,15 @@
 # Microblog
 
-To start your Phoenix server:
+user should be able to create an account
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+user should be able to view other accounts
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+user should be able to view posts
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+user should be able to log in
 
-## Learn more
+user should be able to follow other users
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+user should be able to delete their account
+
+When the user goes to the homepage they will be shown the list of posts. They can choose to log in if they want to. They can also make an account. They can also create a blog post if they are logged in. They can also follow users. 
