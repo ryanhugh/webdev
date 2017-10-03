@@ -7,7 +7,6 @@
       <th>Passwordhash</th>
       <th>Email</th>
       <th>Username</th>
-      <th></th>
 
       <th></th>
     </tr>
@@ -19,16 +18,6 @@
       <td><%= user.passwordHash %></td>
       <td><%= user.email %></td>
       <td><%= user.username %></td>
-      <td>
-
-        <form action="/followings" method="post">
-          <input type="text" name="follower" style="display:none" value="@user.username">
-          <input type="text" name="following" style="display:none" value="">
-          <input name="_csrf_token" type="hidden" value="HREHMWc8Px0hA103WDwjFCh0TUcgNgAAwRFtTDzSwd/x9vyUDC84ug==">
-          <input type="submit" value="Follow" onsubmit="onFollow">
-        </form> 
-
-      </td>
 
       <td class="text-right">
         <span><%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
