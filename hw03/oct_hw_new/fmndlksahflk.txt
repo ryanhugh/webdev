@@ -1,8 +1,10 @@
 mix phx.gen.html Blog User users name:string passwordHash:string email:string username:string
 
-mix phx.gen.html Blog Post posts postid:integer title:string content:string user_id:references:users 
+mix phx.gen.html Blog Post posts postid:integer title:string content:string user_id:string 
 
-mix phx.gen.html Blog Follow followings follower_user_id:references:users following_user_id:references:users
+mix phx.gen.html Blog Follow followings follower_user_id:string following_user_id:string
+
+
 
 
 
@@ -10,6 +12,7 @@ mix phx.gen.html Blog Follow followings follower_user_id:references:users follow
 mix phx.gen.html Blog Follow followings cart_id:references:carts product_id:references:products count:integer
 
 
+CREATE DATABASE microblog_prod WITH TEMPLATE microblog_dev OWNER postgres;
 
 
 
