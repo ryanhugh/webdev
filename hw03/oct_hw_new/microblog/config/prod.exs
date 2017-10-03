@@ -62,3 +62,12 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
+ 
+config :microblog, Microblog.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "microblog_prod",
+  hostname: "localhost",
+  pool_size: 10
+
