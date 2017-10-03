@@ -3,7 +3,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Name222</th>
+      <th>Name</th>
       <th>Passwordhash</th>
       <th>Email</th>
       <th>Username</th>
