@@ -6,19 +6,21 @@ defmodule MicroblogWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
-    plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_user
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_user
   end
 
   scope "/", MicroblogWeb do
     pipe_through :browser # Use the default browser stack
 
 
+    resources "/likes", LikeController, except: [:new, :edit]
     resources "/users", UserController
     resources "/posts", PostController
     resources "/followings", FollowController

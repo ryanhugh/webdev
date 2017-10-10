@@ -5,16 +5,23 @@ defmodule Microblog.Blog.Like do
 
 
   schema "likes" do
-    field :liked, :string
-    field :user, :string
+    belongs_to :liked_post_id, Microblog.Blog.Post
+    belongs_to :user_id, Microblog.Blog.User
 
     timestamps()
   end
 
-  @doc false
+  # @doc false
+  # def changeset(%Like{} = like, attrs) do
+  #   like
+  #   |> cast(attrs, [])
+  #   |> validate_required([])
+  # end
+
+
   def changeset(%Like{} = like, attrs) do
     like
-    |> cast(attrs, [:liked, :user])
-    |> validate_required([:liked, :user])
+    |> cast(attrs, [:liked_post_id, :user_id])
+    |> validate_required([:liked_post_id, :user_id])
   end
 end
