@@ -1,28 +1,43 @@
-<h2>Show Post</h2>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-8 blog-main">
 
-<ul>
+      <div class="blog-header">
+        <h1 class="blog-title"><%= @post.title %></h1>
+        <p class="lead blog-description"><%= @post.content %></p>
 
-  <li>
-    <strong>Postid:</strong>
-    <%= @post.postid %>
-  </li>
+        <div id="like-bar">
+        <div id="post-likes"
+         data-path="<%= like_path(@conn, :index) %>"
+         data-post_id="<%= @post.id %>">
+      &nbsp;
+    </div>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </li>
+    <script id="likes-template" type="text/x-handlebars-template">
+      <div class="m-2">
+        <p>Likes:
 
-  <li>
-    <strong>Content:</strong>
-    <%= @post.content %>
-  </li>
+        {{#each data}}
+          {{user_email}},
 
-  <li>
-    <strong>User:</strong>
-    <%= @post.user_id %>
-  </li>
+        {{else}}
+        No likes yet.
+        {{/each}}</p>
+      </div>
+    </script>
 
-</ul>
+    <%= if @current_user do %>
+    <div class="m-2">
+      <button id="like-add-button" class="btn btn-primary"
+              data-user-id="<%= @current_user.id %>">Like!</button>
+    </div>
+    <% end %>
+  </div>
 
-<span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
-<span><%= link "Back", to: post_path(@conn, :index) %></span>
+    </div>
+  </div>
+</div>
+
+<p><span><%= link "Edit", to: post_path(@conn, :edit, @post), class: "btn btn-primary btn-xs" %></span></p>
+<p><span><%= link "Back", to: post_path(@conn, :index) %></span></p>
+
