@@ -41,13 +41,13 @@ $(function() {
   function fetch_likes() {
     function got_likes(data) {
       console.log(data);
-      let html = tmpl(data);
+      let html = tmpl(data); 
       dd.html(html);
     }
 
     $.ajax({
       url: path,
-      data: {post_id: p_id},
+      data: {liked_post_id: p_id},
       contentType: "application/json",
       dataType: "json",
       method: "GET",
@@ -56,7 +56,8 @@ $(function() {
   }
 
   function add_like() {
-    let data = {like: {post_id: p_id, user_id: u_id}};
+    let data = {like: {liked_post_id: p_id, user_id: u_id}};
+
 
     $.ajax({
       url: path,

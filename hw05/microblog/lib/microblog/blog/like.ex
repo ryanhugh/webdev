@@ -5,8 +5,8 @@ defmodule Microblog.Blog.Like do
 
 
   schema "likes" do
-    belongs_to :liked_post_id, Microblog.Blog.Post
-    belongs_to :user_id, Microblog.Blog.User
+    belongs_to :liked_post, Microblog.Blog.Post
+    belongs_to :user, Microblog.Blog.User
 
     timestamps()
   end
