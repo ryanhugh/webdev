@@ -39,18 +39,20 @@ $(function() {
   let u_id = bb.data('user-id');
 
   let likesData = []
+  let likeMap = {}
 
   function fetch_likes() {
     function got_likes(data) {
       console.log(data);
       likesData = data;
 
+      likeMap={}
 
       for (var i = 0; i < data.data.length; i++) {
-        if (data.data[i].id == window.currUserId) {
-          console.log('fdhfosajlk')
-        }
+        likeMap[data.data[i].user_email] = data.data[i]
       }
+
+      data.data = Object.values(likeMap)
 
       let html = tmpl(data); 
       dd.html(html);
@@ -70,6 +72,9 @@ $(function() {
     let data = {like: {liked_post_id: p_id, user_id: u_id}};
 
 
+    $("#like-add-button").hide()
+    $("#unlike-button").show()
+
     $.ajax({
       url: path,
       data: JSON.stringify(data),
@@ -83,8 +88,12 @@ $(function() {
 
   function delete_like() {
 
+    $("#unlike-button").hide()
+    $("#like-add-button").show()
+
+
     $.ajax({
-      url: path + '/' + likesData.data[0].id,
+      url: path + '/' + likeMap[window.currUserEmail].id,
       contentType: "application/json",
       dataType: "json",
       method: "DELETE",

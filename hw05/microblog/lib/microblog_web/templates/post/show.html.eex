@@ -1,5 +1,6 @@
 <script type="text/javascript">
-  window.currUserId = <%= @current_user.id %>
+  window.currUserId = <%= @current_user.id %>;
+  window.currUserEmail = "<%= @current_user.email %>";
 </script>
 
 <div class="container mt-4">
