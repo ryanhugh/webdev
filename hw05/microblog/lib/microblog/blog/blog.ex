@@ -307,11 +307,12 @@ defmodule Microblog.Blog do
   """
   def list_likes do
     Repo.all(Like)
+    |> Repo.preload(:user)
   end
 
   def list_post_likes(post_id) do
     Repo.all(from r in Like, where: r.post_id == ^post_id)
-    |> Repo.preload(:user_id)
+    |> Repo.preload(:user)
   end
 
   @doc """

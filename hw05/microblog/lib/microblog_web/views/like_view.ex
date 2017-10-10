@@ -22,7 +22,7 @@ defmodule MicroblogWeb.LikeView do
     }
 
     if Ecto.assoc_loaded?(like.user) do
-      Map.put(data, :email, like.user.email)
+      Map.put(data, :user_email, like.user.email)
     else
       data
     end
