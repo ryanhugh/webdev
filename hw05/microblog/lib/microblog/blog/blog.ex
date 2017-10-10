@@ -309,6 +309,11 @@ defmodule Microblog.Blog do
     Repo.all(Like)
   end
 
+  def list_post_likes(post_id) do
+    Repo.all(from r in Like, where: r.post_id == ^post_id)
+    |> Repo.preload(:user_id)
+  end
+
   @doc """
   Gets a single like.
 
@@ -323,7 +328,10 @@ defmodule Microblog.Blog do
       ** (Ecto.NoResultsError)
 
   """
-  def get_like!(id), do: Repo.get!(Like, id)
+  def get_like!(id) do
+    Repo.get!(Like, id)
+    |> Repo.preload(:user_id)
+  end
 
   @doc """
   Creates a like.

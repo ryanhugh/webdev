@@ -11,14 +11,7 @@ defmodule Microblog.Blog.Like do
     timestamps()
   end
 
-  # @doc false
-  # def changeset(%Like{} = like, attrs) do
-  #   like
-  #   |> cast(attrs, [])
-  #   |> validate_required([])
-  # end
-
-
+  @doc false
   def changeset(%Like{} = like, attrs) do
     like
     |> cast(attrs, [:liked_post_id, :user_id])
