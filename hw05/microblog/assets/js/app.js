@@ -38,9 +38,20 @@ $(function() {
   let bb = $($("#like-add-button")[0]);
   let u_id = bb.data('user-id');
 
+  let likesData = []
+
   function fetch_likes() {
     function got_likes(data) {
       console.log(data);
+      likesData = data;
+
+
+      for (var i = 0; i < data.data.length; i++) {
+        if (data.data[i].id == window.currUserId) {
+          console.log('fdhfosajlk')
+        }
+      }
+
       let html = tmpl(data); 
       dd.html(html);
     }
@@ -70,7 +81,21 @@ $(function() {
 
   }
 
+  function delete_like() {
+
+    $.ajax({
+      url: path + '/' + likesData.data[0].id,
+      contentType: "application/json",
+      dataType: "json",
+      method: "DELETE",
+      success: fetch_likes,
+    });
+
+  }
+
   bb.click(add_like);
+
+  $("#unlike-button").click(delete_like)
 
   fetch_likes();
 });

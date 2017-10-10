@@ -1,3 +1,7 @@
+<script type="text/javascript">
+  window.currUserId = <%= @current_user.id %>
+</script>
+
 <div class="container mt-4">
   <div class="row">
     <div class="col-sm-8 blog-main">
@@ -28,8 +32,8 @@
 
     <%= if @current_user do %>
     <div class="m-2">
-      <button id="like-add-button" class="btn btn-primary"
-              data-user-id="<%= @current_user.id %>">Like!</button>
+      <button id="like-add-button" class="btn btn-primary" data-user-id="<%= @current_user.id %>">Like!</button>
+      <button id="unlike-button" class="btn btn-primary" data-user-id="<%= @current_user.id %>">unlike!</button>
     </div>
     <% end %>
   </div>
