@@ -54,6 +54,15 @@ $(function() {
 
       data.data = Object.values(likeMap)
 
+      if (likeMap[window.currUserEmail]) {
+       $("#unlike-button").show()
+      $("#like-add-button").hide() 
+      }
+      else {
+        $("#unlike-button").hide()
+        $("#like-add-button").show()
+      }
+
       let html = tmpl(data); 
       dd.html(html);
     }
