@@ -51,15 +51,14 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // Finally, pass the token on connect as below. Or remove it
 // from connect if you don't care about authentication.
 
-function remote_draw(argument) {
-	console.log(arguments)
-}
+function onRecievePost(data) {
+	console.log(data)
 
-function clear_stage(argument) {
-	console.log(arguments)
-}
-function got_guess(argument) {
-	console.log(arguments)
+	
+
+
+
+
 }
 
 socket.connect()
@@ -72,15 +71,59 @@ channel.join()
 
 
 
-channel.on("ping", remote_draw);
-channel.on("clear", clear_stage);
-channel.on("guess", got_guess);
+channel.on("ping", onRecievePost);
+// channel.on("clear", clear_stage);
+// channel.on("guess", got_guess);
 
 
-setInterval(function () {
-	  channel.push("ping", {d:3});
+// setInterval(function () {
+// 	  channel.push("ping", {d:3});
 
-},1000)
+// },1000)
+
+console.log('starting')
+
+
+function onPostButtonClick() {
+
+
+	let postId = $('#post_postid').val()
+	let title = $('#post_title').val()
+
+	let content = $('#post_content').val()
+	let user_id = $('#post_user_id').val()
+
+	channel.push("ping", {
+		id: postId,
+		title: title,
+		content: content,
+		user_id: user_id
+	});
+
+}
+
+
+function onPageLoad() {
+		
+	if (location.pathname == '/posts/new' || location.pathname == '/posts') {
+		let newPostButton = $('body > div > div:nth-child(2) > div > form > div:nth-child(7) > button')
+
+		if (!newPostButton) {
+			console.error("NO BUTTON FOUND!")
+			return;
+		}
+
+
+		newPostButton.click(onPostButtonClick)
+
+
+
+
+
+	}
+}
+
+$(onPageLoad)
 
 
 
