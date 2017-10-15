@@ -51,12 +51,37 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // Finally, pass the token on connect as below. Or remove it
 // from connect if you don't care about authentication.
 
+function remote_draw(argument) {
+	console.log(arguments)
+}
+
+function clear_stage(argument) {
+	console.log(arguments)
+}
+function got_guess(argument) {
+	console.log(arguments)
+}
+
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel("updates:lobby", {})
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
+
+
+
+channel.on("ping", remote_draw);
+channel.on("clear", clear_stage);
+channel.on("guess", got_guess);
+
+
+setInterval(function () {
+	  channel.push("ping", {d:3});
+
+},1000)
+
+
 
 export default socket
