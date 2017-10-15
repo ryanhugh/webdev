@@ -52,10 +52,32 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // from connect if you don't care about authentication.
 
 function onRecievePost(data) {
+
+	if (data.id === undefined || data.title === undefined || data.content === undefined || data.email === undefined) {
+		return;
+	}
 	console.log(data)
 
-	
+	let string =  `<tr>
+      <td>${data.id}</td>
+      <td>${data.title}</td>
+      <td>${data.content}</td>
+      <td>${data.email}</td>
 
+      <td class="text-right">
+        <span><a class="btn btn-default btn-xs" href="/posts/${data.id}">Show</a></span>
+        <span><a class="btn btn-default btn-xs" href="/posts/${data.id}/edit">Edit</a></span>
+        <span><a class="btn btn-danger btn-xs" data-confirm="Are you sure?" data-csrf="RDIgEjMKRg4FbzQFOAgyQi46AytdEAAAuxxcXCifVXAvzAd+lt2EmQ==" data-method="delete" data-to="/posts/${data.id}" href="#" rel="nofollow">Delete</a></span>
+      </td>
+    </tr>`
+
+    let tbody = $('body > div > div:nth-child(2) > div > table > tbody')
+
+    if (!tbody) {
+    	return;
+    }
+
+    tbody.append($(string))
 
 
 
@@ -72,53 +94,29 @@ channel.join()
 
 
 channel.on("ping", onRecievePost);
-// channel.on("clear", clear_stage);
-// channel.on("guess", got_guess);
 
-
-// setInterval(function () {
-// 	  channel.push("ping", {d:3});
-
-// },1000)
 
 console.log('starting')
 
 
-function onPostButtonClick() {
-
-
-	let postId = $('#post_postid').val()
-	let title = $('#post_title').val()
-
-	let content = $('#post_content').val()
-	let user_id = $('#post_user_id').val()
-
-	channel.push("ping", {
-		id: postId,
-		title: title,
-		content: content,
-		user_id: user_id
-	});
-
-}
-
 
 function onPageLoad() {
 		
-	if (location.pathname == '/posts/new' || location.pathname == '/posts') {
-		let newPostButton = $('body > div > div:nth-child(2) > div > form > div:nth-child(7) > button')
+	if (location.pathname.startsWith('/posts') && location.hash == '#sendWebSocket' || 1) {
 
-		if (!newPostButton) {
-			console.error("NO BUTTON FOUND!")
-			return;
-		}
+		let postId = location.pathname.split('/')[2]
+		let title = $('body > div > div > div > div > div > div > div > h1').html()
+		let content = $('body > div > div > div > div > div > div > div > p').html()
+		let email = window.currUserEmail
 
+		channel.push("ping", {
+			id: postId,
+			title: title,
+			content: content,
+			email: email
+		});
 
-		newPostButton.click(onPostButtonClick)
-
-
-
-
+		window.location.hash = ''
 
 	}
 }
