@@ -1,7 +1,9 @@
-<script type="text/javascript">
-  window.currUserId = <%= @current_user.id %>;
-  window.currUserEmail = "<%= @current_user.email %>";
-</script>
+<%= if @current_user do %>
+  <script type="text/javascript">
+    window.currUserId = <%= @current_user.id %>;
+    window.currUserEmail = "<%= @current_user.email %>";
+  </script>
+<% end %>
 
 <div class="container mt-4">
   <div class="row">

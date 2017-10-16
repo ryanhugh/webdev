@@ -34,7 +34,6 @@ defmodule MicroblogWeb.PostControllerTest do
       assert redirected_to(conn) == Enum.join([post_path(conn, :show, id), "#sendWebSocket"])
 
       conn = get conn, post_path(conn, :show, id)
-      assert html_response(conn, 200) =~ "Show Post"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
