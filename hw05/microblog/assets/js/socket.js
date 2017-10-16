@@ -77,7 +77,7 @@ function onRecievePost(data) {
     	return;
     }
 
-    tbody.append($(string))
+    tbody.prepend($(string))
 
 
 

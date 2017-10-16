@@ -1,8 +1,5 @@
-language: node_js
-node_js:
-  - 6
-
-script:
-  - bash travis_deploy.sh
-
-cache: yarn
+language: elixir
+elixir:
+  - 1.5.1
+otp_release:
+  - 18.2.1
