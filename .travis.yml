@@ -3,3 +3,6 @@ elixir:
   - 1.5.1
 otp_release:
   - 18.2.1
+
+script:
+  cd hw05/microblog; mix test
